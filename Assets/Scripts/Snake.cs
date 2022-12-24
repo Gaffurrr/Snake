@@ -8,6 +8,7 @@ public class Snake : MonoBehaviour
     private List<Transform> _tail = new List<Transform>();
     public Transform segmentPrefab;
     public Transform tailPrefab;
+    public GameManager GM;
 
     public int initialSize = 3;
 
@@ -22,6 +23,11 @@ public class Snake : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S)) _direction = Vector2.down;
         if (Input.GetKeyDown(KeyCode.D)) _direction = Vector2.right;
         if (Input.GetKeyDown(KeyCode.A)) _direction = Vector2.left;
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Time.timeScale = 0;
+            GM.PauseGame();
+        }
     }
 
     private void FixedUpdate()
@@ -67,4 +73,5 @@ public class Snake : MonoBehaviour
 
         this.transform.position = Vector3.zero;
     }
+        
 }
